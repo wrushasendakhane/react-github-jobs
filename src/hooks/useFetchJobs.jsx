@@ -1,5 +1,9 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
+if (process.env.NODE_ENV === "production") {
+  axios.defaults.baseURL =
+    "https://cors-anywhere.herokuapp.com/https://jobs.github.com/";
+}
 const INITIAL_STATE = {
   jobs: [],
   loading: false,
