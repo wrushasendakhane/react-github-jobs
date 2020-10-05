@@ -1,7 +1,5 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-axios.defaults.baseURL =
-  "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
 const INITIAL_STATE = {
   jobs: [],
   loading: false,
@@ -52,7 +50,7 @@ const useFetchJobs = (params, page) => {
 
     dispatch({ type: actions.FETCH_JOBS_START });
     axios
-      .get("", {
+      .get("/positions.json", {
         cancelToken1: source1.token,
         params: { markdown: true, page: page, ...params },
       })
@@ -75,7 +73,7 @@ const useFetchJobs = (params, page) => {
 
     dispatch({ type: actions.FETCH_JOBS_START });
     axios
-      .get("", {
+      .get("/positions.json", {
         cancelToken2: source2.token,
         params: { markdown: true, page: page + 1, ...params },
       })
